@@ -91,10 +91,10 @@ fbGetMarketingStat <-
         #Send API request
         answer <- httr::GET(QueryString)
         
-          if ( fromJSON(headers(answer)$`x-ad-account-usage`)$acc_id_util_pct > 80 & pause_time < 5 ) {
+          if ( fromJSON(headers(answer)$`x-fb-ads-insights-throttle`)$acc_id_util_pct > 80 & pause_time < 5 ) {
             
             if(console_type == "message"){
-              message("WARNNG: You API limit spent: ", fromJSON(headers(answer)$`x-ad-account-usage`)$acc_id_util_pct )
+              message("WARNNG: You API limit spent: ", fromJSON(headers(answer)$`x-fb-ads-insights-throttle`)$acc_id_util_pct )
               pause_time <- pause_time * 1.5
             }
           }
